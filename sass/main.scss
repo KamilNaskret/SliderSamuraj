@@ -1,2 +1,18 @@
 @import 'variables';
 @import 'slider';
+
+@media (max-width:800px){
+    .slider{
+        &__container{
+            width:100%;
+        }
+        &__dots{
+            width:40%;
+        }
+    }
+}
+@media (max-width:500px){
+    .slider__dots{
+        width:70%;
+    }
+}

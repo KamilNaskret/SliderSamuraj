@@ -57,6 +57,10 @@ class Slider{
         });
         this.dotsArray.forEach((dot) => {
             dot.addEventListener('click',(e) => {
+                for(let i=0;i<this.dotsArray.length;i++){
+                    this.dotsArray[i].classList.remove('active');
+                }
+                e.target.classList.add('active')
                 this.changeSlide(this.dotsArray.indexOf(e.target));
             })
         })
