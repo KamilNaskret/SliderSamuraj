@@ -44,12 +44,23 @@ class Slider{
         img.setAttribute('src',`${this.images[this.currentSlide]}`);
         this.slide.appendChild(img);
     }
+    clearDots(){
+        for(let i=0;i<this.dotsArray.length;i++){
+            this.dotsArray[i].classList.remove('active');
+        }
+    }
     addEventListeners(){
         this.prevBtn.addEventListener('click',() => {
             this.changeSlide(this.currentSlide-1)
+            this.clearDots();
+            this.dotsArray[this.currentSlide].classList.add('active');
+            
         });
         this.nextBtn.addEventListener('click',() => {
             this.changeSlide(this.currentSlide+1)
+            this.clearDots();
+            this.dotsArray[this.currentSlide].classList.add('active');
+            
         });
         document.body.addEventListener('keydown',(e) => {
            e.keyCode===37?this.changeSlide(this.currentSlide-1)
@@ -57,9 +68,7 @@ class Slider{
         });
         this.dotsArray.forEach((dot) => {
             dot.addEventListener('click',(e) => {
-                for(let i=0;i<this.dotsArray.length;i++){
-                    this.dotsArray[i].classList.remove('active');
-                }
+                this.clearDots();
                 e.target.classList.add('active')
                 this.changeSlide(this.dotsArray.indexOf(e.target));
             })
